@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>וידויים של נשואים</title>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;600;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#07070a;--s1:#111116;--s2:#1a1a21;--tx:#f4f4f6;--mu:#9a9aa6;--bd:#26262e;--wine:#8b1a2b;--wine2:#c0283f;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:'Heebo',system-ui,sans-serif;line-height:1.6;overflow-x:hidden}
+a{color:inherit}
+.wrap{max-width:760px;margin:0 auto;padding:0 20px}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(7,7,10,.85);backdrop-filter:blur(14px);border-bottom:1px solid var(--bd)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:56px}
+.logo{font-weight:900;font-size:18px;letter-spacing:-.3px}.logo i{color:var(--wine2);font-style:normal}
+.btn{font:inherit;font-weight:600;border:1px solid var(--bd);background:var(--s2);color:var(--tx);padding:12px 22px;border-radius:999px;cursor:pointer;transition:.25s;text-decoration:none;display:inline-block;font-size:15px}
+.btn:hover{transform:translateY(-2px);border-color:#444}
+.btn.p{background:linear-gradient(135deg,var(--wine),var(--wine2));border:0;box-shadow:0 8px 30px -8px var(--wine2)}
+.btn.sm{padding:7px 14px;font-size:13px}
+.hero{position:relative;padding:90px 0 70px;text-align:center;overflow:hidden}
+.orb{position:absolute;left:50%;top:-120px;width:520px;height:520px;margin-left:-260px;background:radial-gradient(circle,rgba(192,40,63,.38),transparent 65%);filter:blur(20px);animation:pulse 7s ease-in-out infinite;z-index:-1}
+.mask{font-size:64px;opacity:.9;animation:float 6s ease-in-out infinite;display:block;margin-bottom:10px}
+@keyframes pulse{50%{transform:scale(1.15);opacity:.7}}@keyframes float{50%{transform:translateY(-10px)}}
+h1{font-size:clamp(34px,9vw,60px);line-height:1.1;font-weight:900;margin:0 0 18px;letter-spacing:-1.5px}
+h1 em{font-style:normal;background:linear-gradient(90deg,#fff,var(--wine2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{color:var(--mu);font-size:18px;max-width:520px;margin:0 auto 32px}
+.cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.live{display:inline-flex;gap:8px;align-items:center;margin-bottom:22px;font-size:14px;color:var(--mu);background:var(--s1);border:1px solid var(--bd);padding:6px 14px;border-radius:999px}.live[hidden]{display:none}.live .dot{width:8px;height:8px;border-radius:50%;background:#3ddc84;animation:pulse 2s infinite}
+.chat{height:300px;overflow-y:auto;background:var(--s1);border:1px solid var(--bd);border-radius:18px;padding:14px;margin-bottom:10px}.msg{margin-bottom:10px;max-width:85%}.msg small{display:block;color:var(--mu);font-size:11px}.msg span{display:inline-block;background:var(--s2);padding:8px 13px;border-radius:14px;overflow-wrap:anywhere}.msg.me{margin-inline-start:auto}.msg.me span{background:var(--wine)}
+section{padding:56px 0}
+h2{font-size:30px;font-weight:800;margin:0 0 8px;letter-spacing:-.8px}
+.lead{color:var(--mu);margin:0 0 26px}
+.tools{display:flex;flex-direction:column;gap:12px;margin-bottom:22px}
+input,textarea,select{width:100%;font:inherit;color:var(--tx);background:var(--s1);border:1px solid var(--bd);border-radius:14px;padding:13px 16px;outline:0;transition:.2s}
+input:focus,textarea:focus,select:focus{border-color:var(--wine2);box-shadow:0 0 0 3px rgba(192,40,63,.2)}
+textarea{min-height:140px;resize:vertical}
+.chips{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none}
+.chip{flex:none;font:inherit;font-size:14px;color:var(--mu);background:var(--s1);border:1px solid var(--bd);padding:7px 15px;border-radius:999px;cursor:pointer}
+.chip.on{color:#fff;background:var(--wine);border-color:var(--wine2)}
+.card{background:linear-gradient(180deg,var(--s1),#0d0d11);border:1px solid var(--bd);border-radius:22px;padding:22px;margin-bottom:16px;animation:rise .5s both}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}}
+.card.feat{border-color:var(--wine)}
+.meta{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:12px;color:var(--mu);margin-bottom:10px}
+.tag{background:rgba(139,26,43,.25);color:#f08a99;padding:3px 10px;border-radius:999px}
+.card h3{margin:0 0 8px;font-size:20px;font-weight:800}
+.card p{margin:0;color:#d0d0d6;white-space:pre-wrap;overflow-wrap:anywhere}
+.acts{display:flex;gap:10px;margin-top:16px;align-items:center}
+.act{font:inherit;font-size:14px;background:var(--s2);color:var(--tx);border:1px solid var(--bd);border-radius:999px;padding:7px 14px;cursor:pointer}
+.act.on{background:var(--wine);border-color:var(--wine2)}
+.cm{margin-top:14px;border-top:1px solid var(--bd);padding-top:12px}
+.cm div{font-size:14px;color:#c4c4cc;padding:6px 0;overflow-wrap:anywhere}
+.cm form{display:flex;gap:8px;margin-top:8px}
+.empty{text-align:center;color:var(--mu);padding:30px}
+.box{background:var(--s1);border:1px solid var(--bd);border-radius:26px;padding:26px;position:relative;overflow:hidden}
+.box::before{content:"";position:absolute;inset:-1px auto auto -1px;width:200px;height:200px;background:radial-gradient(circle,rgba(192,40,63,.25),transparent 70%)}
+.box>*{position:relative}.box label{display:block;margin:14px 0 6px;font-size:14px;color:var(--mu)}
+.ck{display:flex;gap:10px;align-items:flex-start;margin:16px 0;font-size:14px;color:var(--mu)}.ck input{width:20px;height:20px;margin-top:3px;accent-color:var(--wine2)}
+.lock{font-size:13px;color:var(--mu);margin-top:12px}
+.grid{display:grid;gap:14px}.grid .card{margin:0}.grid .ic{font-size:30px}
+.join{text-align:center;background:linear-gradient(135deg,#1c0509,var(--s1));border:1px solid var(--wine);border-radius:28px;padding:44px 24px}
+details{background:var(--s1);border:1px solid var(--bd);border-radius:16px;padding:16px 20px;margin-bottom:10px}
+summary{cursor:pointer;font-weight:600}details p{color:var(--mu);margin:10px 0 0}
+footer{border-top:1px solid var(--bd);padding:36px 0 50px;text-align:center;color:var(--mu);font-size:14px}
+footer a{margin:0 10px;cursor:pointer;text-decoration:none}
+dialog{background:var(--s1);color:var(--tx);border:1px solid var(--bd);border-radius:22px;padding:24px;max-width:min(92vw,560px);width:100%}
+dialog::backdrop{background:rgba(0,0,0,.75)}
+#adm{max-height:80vh;overflow:auto}#adm .row{border:1px solid var(--bd);border-radius:14px;padding:12px;margin:10px 0}
+#adm .row p{margin:4px 0 10px;font-size:14px;color:#c4c4cc;white-space:pre-wrap}
+#adm .btn{margin:2px}.tabs{display:flex;gap:6px;flex-wrap:wrap}
+#toast{position:fixed;bottom:calc(20px + env(safe-area-inset-bottom,0px));left:50%;transform:translate(-50%,100px);background:var(--wine);padding:12px 22px;border-radius:999px;transition:.4s;z-index:50;font-weight:600}
+#toast.on{transform:translate(-50%,0)}
+@media(min-width:640px){.tools{flex-direction:row}.grid{grid-template-columns:repeat(3,1fr)}}
+body::before{content:"";position:fixed;inset:-10%;z-index:-1;pointer-events:none;background:radial-gradient(38% 28% at 14% 18%,rgba(192,40,63,.38),transparent 70%),radial-gradient(34% 28% at 88% 55%,rgba(98,52,180,.28),transparent 70%),radial-gradient(40% 30% at 28% 96%,rgba(192,40,63,.28),transparent 70%);animation:drift 22s ease-in-out infinite alternate}
+@keyframes drift{to{transform:translate3d(-3%,2%,0) scale(1.08)}}
+nav,.card,.box,.join,details,.chat,.live,dialog,#toast,.chip,.act,.btn,input,textarea,select{background-image:linear-gradient(135deg,rgba(255,255,255,.15),rgba(255,255,255,.03) 55%,rgba(255,255,255,.08));background-color:rgba(255,255,255,.045);-webkit-backdrop-filter:blur(22px) saturate(180%);backdrop-filter:blur(22px) saturate(180%);border:1px solid rgba(255,255,255,.14);box-shadow:inset 0 1px 0 rgba(255,255,255,.38),inset 0 -1px 0 rgba(255,255,255,.05),inset 1px 0 0 rgba(255,255,255,.08),0 14px 40px -14px rgba(0,0,0,.7)}
+nav{background-color:rgba(10,10,14,.45);border-width:0 0 1px;border-radius:0}
+.card,.box,.join{border-radius:28px}
+.card.feat{border-color:rgba(192,40,63,.7);box-shadow:inset 0 1px 0 rgba(255,255,255,.4),0 0 32px -8px rgba(192,40,63,.55)}
+.box::before{display:none}
+.btn{box-shadow:inset 0 1px 0 rgba(255,255,255,.4),inset 0 -8px 14px -10px rgba(255,255,255,.12),0 8px 24px -10px rgba(0,0,0,.7)}
+.btn.p{background-image:linear-gradient(180deg,rgba(255,255,255,.34),rgba(255,255,255,0) 55%),linear-gradient(135deg,var(--wine),var(--wine2));border:1px solid rgba(255,255,255,.28);box-shadow:inset 0 1px 0 rgba(255,255,255,.55),0 10px 30px -8px var(--wine2)}
+.btn:active,.act:active,.chip:active{transform:scale(.95)}
+.chip.on,.act.on{background-image:linear-gradient(180deg,rgba(255,255,255,.28),rgba(255,255,255,0) 60%),linear-gradient(135deg,var(--wine),var(--wine2))}
+.tag{background:rgba(192,40,63,.22);border:1px solid rgba(255,255,255,.12);box-shadow:inset 0 1px 0 rgba(255,255,255,.25)}
+input,textarea,select{border-radius:18px;background-color:rgba(0,0,0,.28);background-image:none;box-shadow:inset 0 2px 6px rgba(0,0,0,.45),inset 0 -1px 0 rgba(255,255,255,.1)}
+dialog::backdrop{background:rgba(0,0,0,.55);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+dialog{border-radius:30px}
+nav .btn.sm{padding:6px 11px;font-size:12px}.logo{font-size:16px}.msg.sys{max-width:100%;text-align:center}.msg.sys span{background:transparent;color:var(--mu);font-size:12px;box-shadow:none;border:0}
+@media(prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+</head>
+<body>
+<nav><div class="wrap"><div class="logo">וידויים<i>.</i> של נשואים</div><div><button class="btn sm" id="admBtn" hidden>ניהול</button> <button class="btn sm" id="dmBtn">💬 פרטי</button> <a class="btn sm" href="#chat">צ׳אט</a> <a class="btn sm p" href="#send">שליחת וידוי</a></div></div></nav>
+
+<header class="hero"><div class="orb"></div><div class="wrap">
+<span class="mask">🎭</span>
+<h1>לכל אחד יש סוד<br><em>שהוא לא מספר בבית</em></h1>
+<p class="sub">המקום שבו אפשר להגיד את מה שלא תמיד מעזים להגיד בקול. בלי שמות, בלי שיפוטיות, בלי מסכות.</p>
+<div class="live" id="live"><span class="dot"></span><span><b id="liveN">3</b> מחוברים עכשיו</span></div><br>
+<div class="cta"><a class="btn p" href="#send">שליחת וידוי אנונימי</a><a class="btn" href="#feed">קריאת וידויים</a></div>
+</div></header>
+
+<section id="feed"><div class="wrap">
+<h2>וידויים אחרונים</h2><p class="lead">פיד חי של וידויים שאושרו לפרסום.</p>
+<div class="tools"><input id="q" type="search" placeholder="חיפוש וידויים…"></div>
+<div class="chips" id="chips"></div><br>
+<div id="list"></div>
+</div></section>
+
+<section id="chat"><div class="wrap"><h2>צ׳אט אנונימי</h2><p class="lead">שוחחים בזמן אמת. הכינוי אקראי וההודעות נשמרות מקומית.</p>
+<div class="chat" id="cbox"></div>
+<form id="cf" style="display:flex;gap:8px"><input id="cnk" maxlength="20" placeholder="כינוי" style="max-width:110px"><input id="cin" maxlength="300" placeholder="כתבו הודעה…"><button class="btn p">שליחה</button></form></div></section>
+
+<section id="send"><div class="wrap"><div class="box">
+<h2>יש משהו שיושב לך על הלב?</h2>
+<p class="lead">כתבו בחופשיות. הווידוי יעבור לאישור המנהל לפני פרסום.</p>
+<form id="f">
+<label>כינוי (לא חובה, לא שם אמיתי)</label><input id="nk" maxlength="20" placeholder="ברירת מחדל: אנונימי">
+<label>כותרת</label><input id="t" maxlength="80" required>
+<label>הווידוי</label><textarea id="b" maxlength="2000" required></textarea>
+<label>קטגוריה</label><select id="c"></select>
+<div class="ck"><input type="checkbox" id="ok" required><span>אני מאשר/ת פרסום אנונימי של הווידוי. אל תכללו שמות, טלפונים, כתובות או פרטים מזהים.</span></div>
+<button class="btn p" style="width:100%">שליחת וידוי</button>
+<div class="lock">🔒 פרטי השולח אינם נשמרים יחד עם הווידוי ואינם מוצגים באתר.</div>
+</form></div></div></section>
+
+<section><div class="wrap"><h2>למה דווקא אצלנו?</h2><br>
+<div class="grid">
+<div class="card"><div class="ic">🕶️</div><h3>אנונימיות</h3><p>אפשר לשתף בלי לחשוף זהות.</p></div>
+<div class="card"><div class="ic">🫂</div><h3>קהילה</h3><p>אנשים שחווים דברים דומים לשלכם.</p></div>
+<div class="card"><div class="ic">🤍</div><h3>בלי שיפוטיות</h3><p>מקום לשתף ולהרגיש שמישהו מקשיב.</p></div>
+</div></div></section>
+
+<section><div class="wrap"><div class="join">
+<h2>הסיפורים הכי מעניינים מתחילים מאחורי הקלעים</h2><br>
+<a class="btn p" id="fb" href="#" target="_blank" rel="noopener">הצטרפות לקבוצת הפייסבוק</a>
+</div></div></section>
+
+<section><div class="wrap"><h2>שאלות נפוצות</h2><br>
+<details><summary>האם אפשר לפרסם וידוי באופן אנונימי?</summary><p>כן. הווידוי נשמר בלי שם ובלי פרטי שולח, ומוצג ללא כל זיהוי.</p></details>
+<details><summary>האם הווידוי מתפרסם מיד?</summary><p>לא. כל וידוי עובר אישור מנהל לפני שהוא עולה לפיד.</p></details>
+<details><summary>האם אפשר להגיב לווידויים?</summary><p>כן, ישירות מתחת לכל וידוי.</p></details>
+</div></section>
+
+<footer><div class="wrap"><div class="logo">וידויים<i>.</i> של נשואים</div><p>
+<a data-d="תקנון">תקנון</a><a data-d="מדיניות פרטיות">מדיניות פרטיות</a><a data-d="יצירת קשר">יצירת קשר</a><a id="mgr">כניסת מנהל</a></p>
+<p>© וידויים של נשואים</p></div></footer>
+
+<dialog id="dlg"><h2 id="dt"></h2><p id="dp" style="color:var(--mu)"></p><button class="btn" onclick="dlg.close()">סגירה</button></dialog>
+<dialog id="adlg"><div style="display:flex;justify-content:space-between"><h2>ניהול האתר</h2><button class="btn sm" onclick="adlg.close()">✕</button></div>
+<div class="tabs" id="tabs"></div><div id="adm"></div></dialog>
+<dialog id="pdlg"><h2>כניסת מנהל</h2><form id="pf"><input id="pw" type="password" inputmode="numeric" placeholder="הכנס סיסמת מנהל (2461)" autocomplete="off"><br><br><button class="btn p">כניסה</button> <button type="button" class="btn" onclick="pdlg.close()">ביטול</button></form></dialog>
+<dialog id="ddlg"><div style="display:flex;justify-content:space-between"><h2>שיחה פרטית</h2><button class="btn sm" onclick="ddlg.close()">✕</button></div><p class="lock">פניות למנהל.</p><div class="chat" id="dbox"></div><form id="df" style="display:flex;gap:8px"><input id="din" maxlength="500" placeholder="כתבו הודעה…"><button class="btn p">שליחה</button></form></dialog>
+<div id="toast"></div>
+
+<script>
+const FB_LINK="https://www.facebook.com/share/g/1HjmRSoyDj/?mibextid=wwXIfr";
+const CATS=["סודות מהנישואים","בגידות ואמון","זוגיות ומשפחה","פנטזיות","חיי היום יום","דברים שלא מספרים לאף אחד"];
+const DEFAULT_PENDING=[
+{id:"p1",title:"מתלבט אם לספר לה על הנסיעה",body:"אני יודע שזה יעשה בלגן אבל מרגיש שאני חייב לשתף.",cat:CATS[0],ts:Date.now()-18e5,nick:"אנונימי"}
+];
+const DEFAULT_PUB=[
+{id:"n1",title:"שלחתי הודעה לאקס בשתיים בלילה",body:"לא קרה כלום. אבל ברבע שעה של שיחה הרגשתי יותר חי מאשר בחצי שנה בבית.",cat:CATS[1],ts:Date.now()-36e5,likes:4,myLike:false,featured:true,nick:"אנונימי"}
+];
+
+let pub = JSON.parse(localStorage.getItem("wid_pub") || JSON.stringify(DEFAULT_PUB));
+let pend = JSON.parse(localStorage.getItem("wid_pend") || JSON.stringify(DEFAULT_PENDING));
+let comments = JSON.parse(localStorage.getItem("wid_com") || "{}");
+let chatMsgs = JSON.parse(localStorage.getItem("wid_chat") || JSON.stringify([{n:"מערכת",t:"ברוכים הבאים לצ'אט האנונימי!"}]));
+let dmMsgs = JSON.parse(localStorage.getItem("wid_dm") || JSON.stringify([{f:"s",t:"שלום, איך אפשר לעזור?"}]));
+
+let isAdmin = localStorage.getItem("wid_admin") === "true";
+let tab = "pend";
+
+const $=s=>document.querySelector(s);
+const h=(t,p={},...k)=>{const e=document.createElement(t);for(const x in p){x.startsWith("on")?e[x]=p[x]:x==="class"?e.className=p[x]:e.setAttribute(x,p[x])}e.append(...k.flat().filter(v=>v!=null));return e};
+const toast=m=>{const t=$("#toast");t.textContent=m;t.classList.add("on");setTimeout(()=>t.classList.remove("on"),2600)};
+const fmt=t=>new Date(t).toLocaleDateString("he-IL");
+$("#fb").href=FB_LINK;
+$("#c").append(...CATS.map(c=>h("option",{},c)));
+
+let cat="הכל", q="", openComments=new Set();
+
+function saveAll(){
+ localStorage.setItem("wid_pub", JSON.stringify(pub));
+ localStorage.setItem("wid_pend", JSON.stringify(pend));
+ localStorage.setItem("wid_com", JSON.stringify(comments));
+ localStorage.setItem("wid_chat", JSON.stringify(chatMsgs));
+ localStorage.setItem("wid_dm", JSON.stringify(dmMsgs));
+ localStorage.setItem("wid_admin", isAdmin);
+}
+
+function chips(){
+ const w=$("#chips");
+ w.replaceChildren(...["הכל",...CATS].map(c=>h("button",{class:"chip"+(c===cat?" on":""),onclick:()=>{cat=c;chips();draw()}},c)));
+}
+
+function draw(){
+ const list = pub.filter(x=>(cat==="הכל"||x.cat===cat)&&(!q||(x.title+x.body).includes(q))).sort((a,b)=>b.ts-a.ts);
+ const L=$("#list"); L.replaceChildren();
+ if(!list.length){L.append(h("div",{class:"empty"},"לא נמצאו וידויים."));return;}
+ 
+ list.forEach(x=>{
+  const cs = comments[x.id] || [];
+  const card=h("div",{class:"card"+(x.featured?" feat":"")},
+   h("div",{class:"meta"},x.featured?h("span",{class:"tag"},"⭐ מומלץ"):null,h("span",{class:"tag"},x.cat),h("span",{},fmt(x.ts)),h("span",{},"✍ "+(x.nick||"אנונימי"))),
+   h("h3",{},x.title),h("p",{},x.body),
+   h("div",{class:"acts"},
+    h("button",{class:"act"+(x.myLike?" on":""),onclick:()=>{x.myLike=!x.myLike; x.likes+=(x.myLike?1:-1); saveAll(); draw();}},"❤ אהבתי "+x.likes),
+    h("button",{class:"act",onclick:()=>{openComments.has(x.id)?openComments.delete(x.id):openComments.add(x.id); draw();}},"💬 "+cs.length))
+  );
+  if(openComments.has(x.id)){
+   const box=h("div",{class:"cm"},cs.map(c=>h("div",{},"• "+c)));
+   const inp=h("input",{placeholder:"הוסיפו תגובה אנונימית…",maxlength:"300"});
+   box.append(h("form",{onsubmit:e=>{e.preventDefault(); const v=inp.value.trim(); if(!v)return; if(!comments[x.id])comments[x.id]=[]; comments[x.id].push(v); saveAll(); draw(); toast("התגובה פורסמה");}},inp,h("button",{class:"btn sm p"},"שליחה")));
+   card.append(box);
+  }
+  L.append(card);
+ });
+}
+
+$("#q").oninput=e=>{q=e.target.value.trim(); draw();};
+
+$("#f").onsubmit=e=>{
+ e.preventDefault();
+ const t=$("#t").value.trim(), b=$("#b").value.trim(), nk=$("#nk").value.trim().slice(0,20);
+ if(!t || !b) return;
+ pend.unshift({id:"p_"+Date.now(), title:t, body:b, cat:$("#c").value, nick:nk||"אנונימי", ts:Date.now()});
+ saveAll();
+ e.target.reset();
+ toast("הווידוי נשלח בהצלחה וממתין לאישור מנהל!");
+};
+
+// Admin panel logic
+const TABS={pend:"ממתינים ("+pend.length+")",pub:"מפורסמים ("+pub.length+")"};
+function adm(){
+ $("#tabs").replaceChildren(...Object.entries(TABS).map(([k,v])=>h("button",{class:"chip"+(k===tab?" on":""),onclick:()=>{tab=k;adm()}},v)));
+ const A=$("#adm"); A.replaceChildren();
+ 
+ const row=(x,btns)=>A.append(h("div",{class:"row"},h("b",{},x.title||""),h("p",{},x.body||""),h("small",{},[x.cat,x.nick&&"✍ "+x.nick,fmt(x.ts)].filter(Boolean).join(" · ")),h("div",{},btns)));
+ const B=(l,f)=>h("button",{class:"btn sm",onclick:async()=>{try{await f(); saveAll(); adm(); draw();}catch(e){toast("שגיאה")}}},l);
+
+ if(tab==="pend"){
+  if(!pend.length) A.append(h("div",{class:"empty"},"אין וידויים ממתינים"));
+  pend.forEach(x=>row(x,[
+   B("✅ אישור",()=>{pub.unshift({...x, likes:0, myLike:false, featured:false}); pend=pend.filter(p=>p.id!==x.id); toast("אושר ופורסם!");}),
+   B("🗑 דחייה",()=>{pend=pend.filter(p=>p.id!==x.id); toast("נדחה");})
+  ]));
+ } else if(tab==="pub"){
+  if(!pub.length) A.append(h("div",{class:"empty"},"אין וידויים מפורסמים"));
+  pub.forEach(x=>row(x,[
+   B(x.featured?"⭐ הסר המלצה":"☆ המלץ",()=>{x.featured=!x.featured;}),
+   B("🗑 מחיקה",()=>{pub=pub.filter(p=>p.id!==x.id); toast("נמחק");})
+  ]));
+ }
+}
+
+$("#mgr").onclick=()=>{ if(isAdmin){ $("#admBtn").hidden=false; adm(); adlg.showModal(); } else { pdlg.showModal(); } };
+$("#admBtn").onclick=()=>{ adm(); adlg.showModal(); };
+
+$("#pf").onsubmit=e=>{
+ e.preventDefault();
+ const pw=$("#pw").value.trim();
+ $("#pw").value="";
+ 
+ if(pw === "2461"){
+  isAdmin=true; saveAll(); pdlg.close();
+  $("#admBtn").hidden=false;
+  toast("התחברת בהצלחה כמנהל!");
+  adm(); adlg.showModal();
+ } else {
+  toast("סיסמה שגויה");
+ }
+};
+
+document.querySelectorAll("[data-d]").forEach(a=>a.onclick=()=>{
+ const T={"תקנון":"התקנון המלא: אין לפרסם פרטים מזהים או תוכן פוגעני.","מדיניות פרטיות":"וידויים נשמרים באופן אנונימי לחלוטין.","יצירת קשר":"לפניות ניתן ליצור קשר דרך קבוצת הפייסבוק."};
+ $("#dt").textContent=a.dataset.d; $("#dp").textContent=T[a.dataset.d]; dlg.showModal();
+});
+
+// Chat setup
+function renderChat(){
+ const b=$("#cbox");
+ b.replaceChildren(...chatMsgs.map(x=>h("div",{class:"msg"+(x.me?" me":"")},h("small",{},x.n),h("span",{},x.t))));
+ b.scrollTop=b.scrollHeight;
+}
+renderChat();
+$("#cf").onsubmit=e=>{
+ e.preventDefault();
+ const v=$("#cin").value.trim(); if(!v)return;
+ const nk=$("#cnk").value.trim() || "אנונימי #" + Math.floor(100+Math.random()*900);
+ chatMsgs.push({n:nk+" (אני)", t:v, me:true});
+ saveAll(); renderChat();
+ $("#cin").value="";
+};
+
+// DM setup
+function renderDM(){
+ const b=$("#dbox");
+ b.replaceChildren(...dmMsgs.map(x=>h("div",{class:"msg"+(x.f==="u"?" me":"")},h("small",{},x.f==="u"?"אני":"מערכת"),h("span",{},x.t))));
+ b.scrollTop=b.scrollHeight;
+}
+$("#dmBtn").onclick=()=>{renderDM(); ddlg.showModal();};
+$("#df").onsubmit=e=>{
+ e.preventDefault();
+ const v=$("#din").value.trim(); if(!v)return;
+ dmMsgs.push({f:"u", t:v});
+ saveAll(); renderDM(); $("#din").value="";
+};
+
+if(isAdmin) $("#admBtn").hidden=false;
+chips(); draw();
+</script>
+</body>
+</html>
