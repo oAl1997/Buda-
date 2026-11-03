@@ -1,64 +1,9 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
- 
-
-
-</script>
-
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>וידויים של נשואים</title>
- <meta property="og:image" content=https:<!-- ========================================== -->
-<!-- סקריפט מעודכן לפופאפ (מתחבר למערכת הניהול) -->
-<!-- ========================================== -->
-<script>
-// הפעלת טיימר של 10 שניות מרגע טעינת הדף
-setTimeout(function() {
-  document.getElementById('confession-popup').style.display = 'flex';
-}, 10000);
-
-// סגירת הפופאפ
-function closePopup() {
-  document.getElementById('confession-popup').style.display = 'none';
-}
-
-// שליחת הווידוי מתוך הפופאפ היישר למערכת הניהול
-function submitPopupConfession() {
-  let text = document.getElementById('popup-confession-text').value.trim();
-  if(text === "") {
-    alert("אנא כתוב/י וידוי לפני השליחה");
-    return;
-  }
-  
-  // הוספת הווידוי לרשימת הממתינים (pend) בדיוק כמו בטופס הראשי
-  pend.unshift({
-    id: "p_" + Date.now(), 
-    title: "וידוי מהפופאפ", 
-    body: text, 
-    cat: CATS[0], 
-    nick: "אנונימי", 
-    ts: Date.now()
-  });
-  
-  // שמירה בכלים ובזיכרון המקומי
-  saveAll();
-  
-  // איפוס שדה הטקסט והצגת הודעת הצלחה
-  document.getElementById('popup-confession-text').value = "";
-  document.getElementById('popup-success-msg').style.display = "block";
-  
-  // סגירת הפופאפ אחרי 3 שניות
-  setTimeout(() => {
-    document.getElementById('popup-success-msg').style.display = "none";
-    closePopup();
-  }, 3000);
-}
-</script>
-
-<meta property="og:title" content="וידויים של נושאיים" />
-<meta property="og:description" content="לכל אחד יש סוד שהוא לא מספר בבית" />
-
 <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;600;800;900&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#07070a;--s1:#111116;--s2:#1a1a21;--tx:#f4f4f6;--mu:#9a9aa6;--bd:#26262e;--wine:#8b1a2b;--wine2:#c0283f;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -99,6 +44,7 @@ textarea{min-height:140px;resize:vertical}
 .card.feat{border-color:var(--wine)}
 .meta{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:12px;color:var(--mu);margin-bottom:10px}
 .tag{background:rgba(139,26,43,.25);color:#f08a99;padding:3px 10px;border-radius:999px}
+.tag.demo{background:#2a2a33;color:var(--mu)}
 .card h3{margin:0 0 8px;font-size:20px;font-weight:800}
 .card p{margin:0;color:#d0d0d6;white-space:pre-wrap;overflow-wrap:anywhere}
 .acts{display:flex;gap:10px;margin-top:16px;align-items:center}
@@ -127,6 +73,7 @@ dialog::backdrop{background:rgba(0,0,0,.75)}
 #toast{position:fixed;bottom:calc(20px + env(safe-area-inset-bottom,0px));left:50%;transform:translate(-50%,100px);background:var(--wine);padding:12px 22px;border-radius:999px;transition:.4s;z-index:50;font-weight:600}
 #toast.on{transform:translate(-50%,0)}
 @media(min-width:640px){.tools{flex-direction:row}.grid{grid-template-columns:repeat(3,1fr)}}
+/* liquid glass */
 body::before{content:"";position:fixed;inset:-10%;z-index:-1;pointer-events:none;background:radial-gradient(38% 28% at 14% 18%,rgba(192,40,63,.38),transparent 70%),radial-gradient(34% 28% at 88% 55%,rgba(98,52,180,.28),transparent 70%),radial-gradient(40% 30% at 28% 96%,rgba(192,40,63,.28),transparent 70%);animation:drift 22s ease-in-out infinite alternate}
 @keyframes drift{to{transform:translate3d(-3%,2%,0) scale(1.08)}}
 nav,.card,.box,.join,details,.chat,.live,dialog,#toast,.chip,.act,.btn,input,textarea,select{background-image:linear-gradient(135deg,rgba(255,255,255,.15),rgba(255,255,255,.03) 55%,rgba(255,255,255,.08));background-color:rgba(255,255,255,.045);-webkit-backdrop-filter:blur(22px) saturate(180%);backdrop-filter:blur(22px) saturate(180%);border:1px solid rgba(255,255,255,.14);box-shadow:inset 0 1px 0 rgba(255,255,255,.38),inset 0 -1px 0 rgba(255,255,255,.05),inset 1px 0 0 rgba(255,255,255,.08),0 14px 40px -14px rgba(0,0,0,.7)}
@@ -153,7 +100,7 @@ nav .btn.sm{padding:6px 11px;font-size:12px}.logo{font-size:16px}.msg.sys{max-wi
 <span class="mask">🎭</span>
 <h1>לכל אחד יש סוד<br><em>שהוא לא מספר בבית</em></h1>
 <p class="sub">המקום שבו אפשר להגיד את מה שלא תמיד מעזים להגיד בקול. בלי שמות, בלי שיפוטיות, בלי מסכות.</p>
-<div class="live" id="live"><span class="dot"></span><span><b id="liveN">3</b> מחוברים עכשיו</span></div><br>
+<div class="live" id="live" hidden><span class="dot"></span><span><b id="liveN">1</b> מחוברים עכשיו</span></div><br>
 <div class="cta"><a class="btn p" href="#send">שליחת וידוי אנונימי</a><a class="btn" href="#feed">קריאת וידויים</a></div>
 </div></header>
 
@@ -162,21 +109,23 @@ nav .btn.sm{padding:6px 11px;font-size:12px}.logo{font-size:16px}.msg.sys{max-wi
 <div class="tools"><input id="q" type="search" placeholder="חיפוש וידויים…"></div>
 <div class="chips" id="chips"></div><br>
 <div id="list"></div>
+<p class="lock" id="demoNote">הווידויים הראשונים בפיד נכתבו על ידי הצוות כדי לפתוח את הדף. וידויי הגולשים יופיעו כאן לאחר אישור.</p>
 </div></section>
 
-<section id="chat"><div class="wrap"><h2>צ׳אט אנונימי</h2><p class="lead">שוחחים בזמן אמת. הכינוי אקראי וההודעות נשמרות מקומית.</p>
-<div class="chat" id="cbox"></div>
-<form id="cf" style="display:flex;gap:8px"><input id="cnk" maxlength="20" placeholder="כינוי" style="max-width:110px"><input id="cin" maxlength="300" placeholder="כתבו הודעה…"><button class="btn p">שליחה</button></form></div></section>
+<section id="chat"><div class="wrap"><h2>צ׳אט אנונימי</h2><p class="lead">שוחחים בזמן אמת עם מי שמחובר עכשיו. בלי שמות, רק כינוי אקראי. ההודעות לא נשמרות: רואים רק מה שנשלח אחרי שנכנסתם.</p>
+<div class="chat" id="cbox"></div><div class="lock" id="cnote" style="margin:0 0 10px">הצ׳אט זמין רק למחוברים.</div>
+<form id="cf" style="display:flex;gap:8px"><input id="cnk" maxlength="20" placeholder="כינוי" style="max-width:110px"><input id="cin" maxlength="300" placeholder="כתבו הודעה…" disabled><button class="btn p">שליחה</button></form></div></section>
 
 <section id="send"><div class="wrap"><div class="box">
 <h2>יש משהו שיושב לך על הלב?</h2>
-<p class="lead">כתבו בחופשיות. הווידוי יעבור לאישור המנהל לפני פרסום.</p>
+<p class="lead">כתבו בחופשיות. הווידוי יעבור אישור לפני פרסום.</p>
 <form id="f">
 <label>כינוי (לא חובה, לא שם אמיתי)</label><input id="nk" maxlength="20" placeholder="ברירת מחדל: אנונימי">
 <label>כותרת</label><input id="t" maxlength="80" required>
 <label>הווידוי</label><textarea id="b" maxlength="2000" required></textarea>
 <label>קטגוריה</label><select id="c"></select>
 <div class="ck"><input type="checkbox" id="ok" required><span>אני מאשר/ת פרסום אנונימי של הווידוי. אל תכללו שמות, טלפונים, כתובות או פרטים מזהים.</span></div>
+<div class="ck"><input type="checkbox" id="dmok"><span>אפשרו למנהל לפנות אלי בצ׳אט פרטי אנונימי (השיחה תהיה בכפתור 💬 פרטי, בלי חשיפת זהות).</span></div>
 <button class="btn p" style="width:100%">שליחת וידוי</button>
 <div class="lock">🔒 פרטי השולח אינם נשמרים יחד עם הווידוי ואינם מוצגים באתר.</div>
 </form></div></div></section>
@@ -195,8 +144,10 @@ nav .btn.sm{padding:6px 11px;font-size:12px}.logo{font-size:16px}.msg.sys{max-wi
 
 <section><div class="wrap"><h2>שאלות נפוצות</h2><br>
 <details><summary>האם אפשר לפרסם וידוי באופן אנונימי?</summary><p>כן. הווידוי נשמר בלי שם ובלי פרטי שולח, ומוצג ללא כל זיהוי.</p></details>
-<details><summary>האם הווידוי מתפרסם מיד?</summary><p>לא. כל וידוי עובר אישור מנהל לפני שהוא עולה לפיד.</p></details>
-<details><summary>האם אפשר להגיב לווידויים?</summary><p>כן, ישירות מתחת לכל וידוי.</p></details>
+<details><summary>האם הווידוי מתפרסם מיד?</summary><p>לא. כל וידוי עובר אישור של מנהל האתר לפני שהוא עולה לפיד.</p></details>
+<details><summary>האם אפשר להגיב לווידויים?</summary><p>כן, ישירות מתחת לכל וידוי. התגובות גם הן אנונימיות ומנוהלות.</p></details>
+<details><summary>האם ניתן להסיר וידוי?</summary><p>כן. פנו אלינו דרך יצירת קשר ונסיר וידוי שפורסם.</p></details>
+<details><summary>האם האתר מאפשר חשיפת זהות?</summary><p>לא. האתר לא מציג פרטי שולחים, ופרטים מזהים בטקסט נחסמים או נמחקים בבדיקה.</p></details>
 </div></section>
 
 <footer><div class="wrap"><div class="logo">וידויים<i>.</i> של נשואים</div><p>
@@ -204,220 +155,159 @@ nav .btn.sm{padding:6px 11px;font-size:12px}.logo{font-size:16px}.msg.sys{max-wi
 <p>© וידויים של נשואים</p></div></footer>
 
 <dialog id="dlg"><h2 id="dt"></h2><p id="dp" style="color:var(--mu)"></p><button class="btn" onclick="dlg.close()">סגירה</button></dialog>
-<dialog id="adlg"><div style="display:flex;justify-content:space-between"><h2>ניהול האתר</h2><button class="btn sm" onclick="adlg.close()">✕</button></div>
+<dialog id="adlg"><div style="display:flex;justify-content:space-between"><h2>ניהול</h2><button class="btn sm" onclick="adlg.close()">✕</button></div>
 <div class="tabs" id="tabs"></div><div id="adm"></div></dialog>
-<dialog id="pdlg"><h2>כניסת מנהל</h2><form id="pf"><input id="pw" type="password" inputmode="numeric" placeholder="הכנס סיסמת מנהל (2461)" autocomplete="off"><br><br><button class="btn p">כניסה</button> <button type="button" class="btn" onclick="pdlg.close()">ביטול</button></form></dialog>
-<dialog id="ddlg"><div style="display:flex;justify-content:space-between"><h2>שיחה פרטית</h2><button class="btn sm" onclick="ddlg.close()">✕</button></div><p class="lock">פניות למנהל.</p><div class="chat" id="dbox"></div><form id="df" style="display:flex;gap:8px"><input id="din" maxlength="500" placeholder="כתבו הודעה…"><button class="btn p">שליחה</button></form></dialog>
+<dialog id="pdlg"><h2>כניסת מנהל</h2><form id="pf"><input id="pe" type="email" placeholder="אימייל" autocomplete="username"><br><br><input id="pw" type="password" placeholder="סיסמה" autocomplete="current-password"><br><br><button class="btn p">כניסה</button> <button type="button" class="btn" onclick="pdlg.close()">ביטול</button></form></dialog>
+<dialog id="ddlg"><div style="display:flex;justify-content:space-between"><h2>שיחה פרטית עם המנהל</h2><button class="btn sm" onclick="ddlg.close()">✕</button></div><p class="lock">השיחה בינך לבין המנהל בלבד. אין שמות, והמנהל רואה רק מזהה אקראי.</p><div class="chat" id="dbox"></div><form id="df" style="display:flex;gap:8px"><input id="din" maxlength="500" placeholder="כתבו הודעה למנהל…"><button class="btn p">שליחה</button></form></dialog>
 <div id="toast"></div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script>
+const SB=supabase.createClient("https://vudpoisjzllbajnjtwvt.supabase.co","sb_publishable_MKgr9nNrE96AThldAk69VA_acxR8t_3");
+let U=null;const ready=(async()=>{let{data}=await SB.auth.getSession();if(!data.session)data=(await SB.auth.signInAnonymously()).data;U=data.session.user;return U})();
+const snap=r=>({docs:r.map(x=>({id:x.id,data:()=>x.data})),size:r.length,empty:!r.length});
+function watch(q,cb,c,e){let on=1;const run=async()=>{const{data,error}=await q();if(error){e&&e(error);return}on&&cb(data)};run();const ch=SB.channel("w"+Math.random()).on("postgres_changes",{event:"*",schema:"public",table:"docs",filter:"col=eq."+c},run).subscribe();return()=>{on=0;SB.removeChannel(ch)}}
+const ok=({error})=>{if(error)throw error};
+const dref=(c,id)=>({id,
+ set:async d=>ok(await SB.from("docs").upsert({col:c,id,data:d,owner:c==="likes"?U.id:null})),
+ update:async d=>{const{data:r}=await SB.from("docs").select("data").eq("col",c).eq("id",id).single();ok(await SB.from("docs").update({data:{...r.data,...d}}).eq("col",c).eq("id",id))},
+ delete:async()=>ok(await SB.from("docs").delete().eq("col",c).eq("id",id)),
+ onSnapshot:(n,e)=>watch(()=>SB.from("docs").select("id,data").eq("col",c).eq("id",id),r=>n({exists:!!r.length,data:()=>r[0]&&r[0].data}),c,e)});
+const db={doc:p=>{const[c,id]=p.split("/");return dref(c,id)},collection:c=>({doc:id=>dref(c,id),
+ add:async d=>{const id=crypto.randomUUID();ok(await SB.from("docs").insert({col:c,id,data:d}));return dref(c,id)},
+ onSnapshot:(n,e)=>watch(()=>SB.from("docs").select("id,data").eq("col",c),r=>n(snap(r)),c,e)})};
+const user={id:async()=>U.id,canEdit:async()=>!!(await SB.rpc("is_admin")).data};
+const H={},PF=[];const rch=SB.channel("room",{config:{presence:{key:crypto.randomUUID()}}});
+rch.on("broadcast",{event:"chat"},p=>H.chat&&H.chat({isMe:false,data:p.payload})).on("presence",{event:"sync"},()=>PF.forEach(f=>f()));
+const room={emit:(t,d)=>rch.send({type:"broadcast",event:t,payload:d}),on:(t,f)=>{H[t]=f},presence:async()=>{},peers:()=>Object.values(rch.presenceState()).flat().map(()=>({kind:"viewer"})),onPeers:f=>PF.push(f)};
+rch.subscribe(st=>{if(st==="SUBSCRIBED")rch.track({here:1})});
+window.claude={use:async n=>{await ready;return n==="user"?user:n==="db"?db:n==="room"?room:null}};
+</script>
 <script>
 const FB_LINK="https://www.facebook.com/share/g/1HjmRSoyDj/?mibextid=wwXIfr";
 const CATS=["סודות מהנישואים","בגידות ואמון","זוגיות ומשפחה","פנטזיות","חיי היום יום","דברים שלא מספרים לאף אחד"];
-const DEFAULT_PENDING=[
-{id:"p1",title:"מתלבט אם לספר לה על הנסיעה",body:"אני יודע שזה יעשה בלגן אבל מרגיש שאני חייב לשתף.",cat:CATS[0],ts:Date.now()-18e5,nick:"אנונימי"}
-];
-const DEFAULT_PUB=[
-{id:"n1",title:"שלחתי הודעה לאקס בשתיים בלילה",body:"לא קרה כלום. אבל ברבע שעה של שיחה הרגשתי יותר חי מאשר בחצי שנה בבית.",cat:CATS[1],ts:Date.now()-36e5,likes:4,myLike:false,featured:true,nick:"אנונימי"}
-];
-
-let pub = JSON.parse(localStorage.getItem("wid_pub") || JSON.stringify(DEFAULT_PUB));
-let pend = JSON.parse(localStorage.getItem("wid_pend") || JSON.stringify(DEFAULT_PENDING));
-let comments = JSON.parse(localStorage.getItem("wid_com") || "{}");
-let chatMsgs = JSON.parse(localStorage.getItem("wid_chat") || JSON.stringify([{n:"מערכת",t:"ברוכים הבאים לצ'אט האנונימי!"}]));
-let dmMsgs = JSON.parse(localStorage.getItem("wid_dm") || JSON.stringify([{f:"s",t:"שלום, איך אפשר לעזור?"}]));
-
-let isAdmin = localStorage.getItem("wid_admin") === "true";
-let tab = "pend";
-
+const DEMO=[
+{id:"n1",title:"שלחתי הודעה לאקס בשתיים בלילה",body:"לא קרה כלום. אבל ברבע שעה של שיחה הרגשתי יותר חי מאשר בחצי שנה בבית. מאז אני לא מצליח להסתכל לה בעיניים.",cat:CATS[1],ts:Date.now()-36e5,demo:1},
+{id:"n2",title:"לא נגענו אחד בשני חודשיים",body:"ושנינו מתנהגים כאילו הכול בסדר. היא אומרת עייפה, אני אומר לחוץ. אף אחד לא אומר את האמת: שפחדנו מהשיחה הזאת יותר מהשתיקה.",cat:CATS[2],ts:Date.now()-3*36e5,demo:1},
+{id:"n3",title:"פתחתי חשבון שאף אחד לא מכיר",body:"אני לא בוגד. אני רק מישהו אחר שם. מישהו מצחיק, חופשי, בלי חשבונות ובלי תפקיד. והכי מפחיד שאני מעדיף אותו.",cat:CATS[5],ts:Date.now()-7*36e5,demo:1},
+{id:"n4",title:"אני מדמיינת חיים בלי נישואים",body:"לא עם מישהו אחר. סתם לבד, עם דירה שקטה ומפתח אחד. אני לא יודעת אם זה סוף או התחלה, ואני מפחדת לברר.",cat:CATS[3],ts:Date.now()-11*36e5,demo:1},
+{id:"n5",title:"אני לא באמת בעבודה עד מאוחר",body:"אני יושב ברכב ליד הים שעה, בלי טלפון, רק כדי שאף אחד לא יבקש ממני כלום. אחר כך חוזר הביתה ומספר על פגישה שלא הייתה.",cat:CATS[4],ts:Date.now()-15*36e5,demo:1},
+{id:"n6",title:"הכי מפחיד שהיא תגלה שאני לא מתגעגע",body:"כשהיא נוסעת לכמה ימים אני מרגיש הקלה. אחר כך אשם. אחר כך מביא פרחים. וחוזר על זה.",cat:CATS[0],ts:Date.now()-20*36e5,demo:1},
+{id:"d1",title:"אני מעמיד פנים שאני אוהב את הקפה שלה",body:"כבר שבע שנים. אני שותה, מחייך, ולא מצליח להגיד לה שזה נורא.",cat:CATS[0],ts:Date.now()-864e5,demo:1},
+{id:"d2",title:"הודעה אחת שלא נשלחה",body:"כתבתי הודעה ומחקתי אותה שלוש פעמים. אולי היום.",cat:CATS[1],ts:Date.now()-2*864e5,demo:1},
+{id:"d3",title:"געגוע לימים של לפני הילדים",body:"אני אוהבת אותם יותר מהכול, ועדיין מתגעגעת לשקט של אז.",cat:CATS[2],ts:Date.now()-3*864e5,demo:1},
+{id:"d4",title:"המחשבות שאני לא אומר בקול",body:"לפעמים אני מדמיין חיים אחרים, ואז חוזר הביתה ומרגיש אשם על עצם המחשבה.",cat:CATS[3],ts:Date.now()-4*864e5,demo:1},
+{id:"d5",title:"אנחנו גרים באותו בית ומדברים רק על לוגיסטיקה",body:"מי אוסף, מי מכין, מי משלם. מתי בפעם האחרונה שאלנו אחד את השנייה איך באמת הולך?",cat:CATS[4],ts:Date.now()-5*864e5,demo:1},
+{id:"d6",title:"הסוד הקטן שלי",body:"אני מתחבא במכונית חמש דקות לפני שנכנס הביתה, רק כדי לשבת בשקט.",cat:CATS[5],ts:Date.now()-6*864e5,demo:1}];
 const $=s=>document.querySelector(s);
 const h=(t,p={},...k)=>{const e=document.createElement(t);for(const x in p){x.startsWith("on")?e[x]=p[x]:x==="class"?e.className=p[x]:e.setAttribute(x,p[x])}e.append(...k.flat().filter(v=>v!=null));return e};
 const toast=m=>{const t=$("#toast");t.textContent=m;t.classList.add("on");setTimeout(()=>t.classList.remove("on"),2600)};
+let db=null,uid=null,isAdmin=false,pub=[],pend=[],cms=[],likes=[],cat="הכל",q="",open=new Set(),demoLikes=new Set(),tab="pend",lastSend=0,online=0,authed=false,fails=0,lockUntil=0,inbox=[],myThread=[],curT=null;
 const fmt=t=>new Date(t).toLocaleDateString("he-IL");
 $("#fb").href=FB_LINK;
 $("#c").append(...CATS.map(c=>h("option",{},c)));
-
-let cat="הכל", q="", openComments=new Set();
-
-function saveAll(){
- localStorage.setItem("wid_pub", JSON.stringify(pub));
- localStorage.setItem("wid_pend", JSON.stringify(pend));
- localStorage.setItem("wid_com", JSON.stringify(comments));
- localStorage.setItem("wid_chat", JSON.stringify(chatMsgs));
- localStorage.setItem("wid_dm", JSON.stringify(dmMsgs));
- localStorage.setItem("wid_admin", isAdmin);
-}
-
-function chips(){
- const w=$("#chips");
- w.replaceChildren(...["הכל",...CATS].map(c=>h("button",{class:"chip"+(c===cat?" on":""),onclick:()=>{cat=c;chips();draw()}},c)));
-}
-
+function chips(){const w=$("#chips");w.replaceChildren(...["הכל",...CATS].map(c=>h("button",{class:"chip"+(c===cat?" on":""),onclick:()=>{cat=c;chips();draw()}},c)))}
 function draw(){
- const list = pub.filter(x=>(cat==="הכל"||x.cat===cat)&&(!q||(x.title+x.body).includes(q))).sort((a,b)=>b.ts-a.ts);
- const L=$("#list"); L.replaceChildren();
- if(!list.length){L.append(h("div",{class:"empty"},"לא נמצאו וידויים."));return;}
- 
- list.forEach(x=>{
-  const cs = comments[x.id] || [];
+ const real=pub.map(x=>({...x}));
+ const all=[...real.filter(x=>x.featured),...real.filter(x=>!x.featured).sort((a,b)=>b.ts-a.ts),...DEMO].filter(x=>(cat==="הכל"||x.cat===cat)&&(!q||(x.title+x.body).includes(q)));
+ $("#demoNote").hidden=!DEMO.length;
+ const L=$("#list");L.replaceChildren();
+ if(!all.length){L.append(h("div",{class:"empty"},"לא נמצאו וידויים."));return}
+ all.forEach(x=>{
+  const mine=x.demo?demoLikes.has(x.id):likes.some(l=>l.c===x.id&&l.u===uid);
+  const n=x.demo?(demoLikes.has(x.id)?1:0):likes.filter(l=>l.c===x.id).length;
+  const cs=x.demo?[]:cms.filter(c=>c.c===x.id).sort((a,b)=>a.ts-b.ts);
   const card=h("div",{class:"card"+(x.featured?" feat":"")},
    h("div",{class:"meta"},x.featured?h("span",{class:"tag"},"⭐ מומלץ"):null,h("span",{class:"tag"},x.cat),h("span",{},fmt(x.ts)),h("span",{},"✍ "+(x.nick||"אנונימי"))),
    h("h3",{},x.title),h("p",{},x.body),
    h("div",{class:"acts"},
-    h("button",{class:"act"+(x.myLike?" on":""),onclick:()=>{x.myLike=!x.myLike; x.likes+=(x.myLike?1:-1); saveAll(); draw();}},"❤ אהבתי "+x.likes),
-    h("button",{class:"act",onclick:()=>{openComments.has(x.id)?openComments.delete(x.id):openComments.add(x.id); draw();}},"💬 "+cs.length))
-  );
-  if(openComments.has(x.id)){
-   const box=h("div",{class:"cm"},cs.map(c=>h("div",{},"• "+c)));
+    h("button",{class:"act"+(mine?" on":""),onclick:()=>like(x)},"❤ אהבתי "+n),
+    h("button",{class:"act",onclick:()=>{open.has(x.id)?open.delete(x.id):open.add(x.id);draw()}},"💬 "+cs.length)));
+  if(open.has(x.id)){
+   const box=h("div",{class:"cm"},cs.map(c=>h("div",{},"• "+c.text)));
    const inp=h("input",{placeholder:"הוסיפו תגובה אנונימית…",maxlength:"300"});
-   box.append(h("form",{onsubmit:e=>{e.preventDefault(); const v=inp.value.trim(); if(!v)return; if(!comments[x.id])comments[x.id]=[]; comments[x.id].push(v); saveAll(); draw(); toast("התגובה פורסמה");}},inp,h("button",{class:"btn sm p"},"שליחה")));
-   card.append(box);
-  }
-  L.append(card);
- });
-}
-
-$("#q").oninput=e=>{q=e.target.value.trim(); draw();};
-
-$("#f").onsubmit=e=>{
+   box.append(h("form",{onsubmit:e=>{e.preventDefault();comment(x,inp.value)}},inp,h("button",{class:"btn sm p"},"שליחה")));
+   card.append(box)}
+  L.append(card)})}
+function pii(s){return /(\+?\d[\d\-\s]{7,}\d)|(@\w)|(https?:\/\/)|(www\.)/i.test(s)}
+async function like(x){
+ if(x.demo){demoLikes.has(x.id)?demoLikes.delete(x.id):demoLikes.add(x.id);return draw()}
+ if(!db||!uid)return toast("נדרשת התחברות כדי לסמן אהבתי");
+ const r=db.collection("likes").doc(x.id+"_"+uid);
+ try{likes.some(l=>l.c===x.id&&l.u===uid)?await r.delete():await r.set({c:x.id,u:uid})}catch(e){toast("שגיאה, נסו שוב")}}
+async function comment(x,v){
+ v=v.trim();if(!v)return;
+ if(x.demo)return toast("זה וידוי דוגמה. תגובות פעילות על וידויים אמיתיים.");
+ if(!db)return toast("נדרשת התחברות כדי להגיב");
+ if(pii(v))return toast("הסירו פרטים מזהים מהתגובה");
+ try{await db.collection("comments").add({c:x.id,text:v,ts:Date.now()});toast("התגובה פורסמה")}catch(e){toast("שגיאה, נסו שוב")}}
+$("#q").oninput=e=>{q=e.target.value.trim();draw()};
+$("#f").onsubmit=async e=>{
  e.preventDefault();
- const t=$("#t").value.trim(), b=$("#b").value.trim(), nk=$("#nk").value.trim().slice(0,20);
- if(!t || !b) return;
- pend.unshift({id:"p_"+Date.now(), title:t, body:b, cat:$("#c").value, nick:nk||"אנונימי", ts:Date.now()});
- saveAll();
- e.target.reset();
- toast("הווידוי נשלח בהצלחה וממתין לאישור מנהל!");
-};
-
-// Admin panel logic
-const TABS={pend:"ממתינים ("+pend.length+")",pub:"מפורסמים ("+pub.length+")"};
+ if(!db)return toast("שליחה זמינה רק למחוברים. התחברו ונסו שוב");
+ const t=$("#t").value.trim(),b=$("#b").value.trim(),nk=$("#nk").value.trim().slice(0,20);
+ if(/מנהל|admin|צוות/i.test(nk))return toast("הכינוי הזה שמור, בחרו אחר");
+ if(pii(t+" "+b+" "+nk))return toast("זוהו פרטים מזהים (טלפון, מייל, קישור). הסירו ושלחו שוב");
+ if(Date.now()-lastSend<30000)return toast("אפשר לשלוח וידוי נוסף בעוד רגע");
+ try{await db.collection("pending").add({title:t,body:b,cat:$("#c").value,nick:nk,ts:Date.now()});lastSend=Date.now();if($("#dmok").checked&&uid)await sendDM(uid,"s","נפתחה שיחה פרטית בעקבות הווידוי: "+t).catch(()=>{});e.target.reset();toast("נשלח! הווידוי ממתין לאישור")}catch(er){toast("שגיאה בשליחה")}};
+document.querySelectorAll("[data-d]").forEach(a=>a.onclick=()=>{
+ const T={"תקנון":"התקנון המלא יפורסם כאן. אין לפרסם פרטים מזהים, תוכן פוגעני או תוכן הנוגע לקטינים.","מדיניות פרטיות":"וידויים נשמרים ללא פרטי שולח. מדיניות הפרטיות המלאה תפורסם כאן.","יצירת קשר":"פרטי יצירת הקשר ובקשות הסרה יתווספו כאן."};
+ $("#dt").textContent=a.dataset.d;$("#dp").textContent=T[a.dataset.d];dlg.showModal()});
+/* ---- admin ---- */
+const TABS={pend:"ממתינים",pub:"מפורסמים",dm:"שיחות",cm:"תגובות",st:"נתונים"};
 function adm(){
  $("#tabs").replaceChildren(...Object.entries(TABS).map(([k,v])=>h("button",{class:"chip"+(k===tab?" on":""),onclick:()=>{tab=k;adm()}},v)));
- const A=$("#adm"); A.replaceChildren();
- 
- const row=(x,btns)=>A.append(h("div",{class:"row"},h("b",{},x.title||""),h("p",{},x.body||""),h("small",{},[x.cat,x.nick&&"✍ "+x.nick,fmt(x.ts)].filter(Boolean).join(" · ")),h("div",{},btns)));
- const B=(l,f)=>h("button",{class:"btn sm",onclick:async()=>{try{await f(); saveAll(); adm(); draw();}catch(e){toast("שגיאה")}}},l);
-
- if(tab==="pend"){
-  if(!pend.length) A.append(h("div",{class:"empty"},"אין וידויים ממתינים"));
-  pend.forEach(x=>row(x,[
-   B("✅ אישור",()=>{pub.unshift({...x, likes:0, myLike:false, featured:false}); pend=pend.filter(p=>p.id!==x.id); toast("אושר ופורסם!");}),
-   B("🗑 דחייה",()=>{pend=pend.filter(p=>p.id!==x.id); toast("נדחה");})
-  ]));
- } else if(tab==="pub"){
-  if(!pub.length) A.append(h("div",{class:"empty"},"אין וידויים מפורסמים"));
-  pub.forEach(x=>row(x,[
-   B(x.featured?"⭐ הסר המלצה":"☆ המלץ",()=>{x.featured=!x.featured;}),
-   B("🗑 מחיקה",()=>{pub=pub.filter(p=>p.id!==x.id); toast("נמחק");})
-  ]));
- }
-}
-
-$("#mgr").onclick=()=>{ if(isAdmin){ $("#admBtn").hidden=false; adm(); adlg.showModal(); } else { pdlg.showModal(); } };
-$("#admBtn").onclick=()=>{ adm(); adlg.showModal(); };
-
-$("#pf").onsubmit=e=>{
- e.preventDefault();
- const pw=$("#pw").value.trim();
- $("#pw").value="";
- 
- if(pw === "2461"){
-  isAdmin=true; saveAll(); pdlg.close();
-  $("#admBtn").hidden=false;
-  toast("התחברת בהצלחה כמנהל!");
-  adm(); adlg.showModal();
- } else {
-  toast("סיסמה שגויה");
- }
-};
-
-document.querySelectorAll("[data-d]").forEach(a=>a.onclick=()=>{
- const T={"תקנון":"התקנון המלא: אין לפרסם פרטים מזהים או תוכן פוגעני.","מדיניות פרטיות":"וידויים נשמרים באופן אנונימי לחלוטין.","יצירת קשר":"לפניות ניתן ליצור קשר דרך קבוצת הפייסבוק."};
- $("#dt").textContent=a.dataset.d; $("#dp").textContent=T[a.dataset.d]; dlg.showModal();
-});
-
-// Chat setup
-function renderChat(){
- const b=$("#cbox");
- b.replaceChildren(...chatMsgs.map(x=>h("div",{class:"msg"+(x.me?" me":"")},h("small",{},x.n),h("span",{},x.t))));
- b.scrollTop=b.scrollHeight;
-}
-renderChat();
-$("#cf").onsubmit=e=>{
- e.preventDefault();
- const v=$("#cin").value.trim(); if(!v)return;
- const nk=$("#cnk").value.trim() || "אנונימי #" + Math.floor(100+Math.random()*900);
- chatMsgs.push({n:nk+" (אני)", t:v, me:true});
- saveAll(); renderChat();
- $("#cin").value="";
-};
-
-// DM setup
-function renderDM(){
- const b=$("#dbox");
- b.replaceChildren(...dmMsgs.map(x=>h("div",{class:"msg"+(x.f==="u"?" me":"")},h("small",{},x.f==="u"?"אני":"מערכת"),h("span",{},x.t))));
- b.scrollTop=b.scrollHeight;
-}
-$("#dmBtn").onclick=()=>{renderDM(); ddlg.showModal();};
-$("#df").onsubmit=e=>{
- e.preventDefault();
- const v=$("#din").value.trim(); if(!v)return;
- dmMsgs.push({f:"u", t:v});
- saveAll(); renderDM(); $("#din").value="";
-};
-
-if(isAdmin) $("#admBtn").hidden=false;
-chips(); draw();
+ const A=$("#adm");A.replaceChildren();
+ const row=(x,btns)=>A.append(h("div",{class:"row"},h("b",{},x.title||""),h("p",{},x.body||x.text||""),h("small",{},[x.cat,x.nick&&"✍ "+x.nick,fmt(x.ts)].filter(Boolean).join(" · ")),h("div",{},btns)));
+ const B=(l,f)=>h("button",{class:"btn sm",onclick:async()=>{try{await f()}catch(e){toast("שגיאה")}}},l);
+ if(tab==="pend"){if(!pend.length)A.append(h("div",{class:"empty"},"אין וידויים ממתינים"));
+  pend.forEach(x=>row(x,[B("✅ אישור",async()=>{await db.collection("published").doc(x.id).set({title:x.title,body:x.body,cat:x.cat,nick:x.nick||"",ts:x.ts,featured:false});await db.collection("pending").doc(x.id).delete()}),
+   B("✏️ עריכה",async()=>{const t=prompt("כותרת",x.title);if(t===null)return;const b=prompt("תוכן",x.body);if(b===null)return;await db.collection("pending").doc(x.id).update({title:t,body:b})}),
+   B("🗑 דחייה",()=>db.collection("pending").doc(x.id).delete())]))}
+ if(tab==="pub"){pub.forEach(x=>row(x,[B(x.featured?"⭐ הסר המלצה":"☆ המלץ",()=>db.collection("published").doc(x.id).update({featured:!x.featured})),
+   B("✏️ עריכה",async()=>{const t=prompt("כותרת",x.title);if(t===null)return;const b=prompt("תוכן",x.body);if(b===null)return;await db.collection("published").doc(x.id).update({title:t,body:b})}),
+   B("🗑 מחיקה",()=>confirm("למחוק?")&&db.collection("published").doc(x.id).delete())]));if(!pub.length)A.append(h("div",{class:"empty"},"אין וידויים מפורסמים"))}
+ if(tab==="cm"){cms.slice().sort((a,b)=>b.ts-a.ts).forEach(x=>row(x,[B("🗑 מחיקה",()=>db.collection("comments").doc(x.id).delete())]));if(!cms.length)A.append(h("div",{class:"empty"},"אין תגובות"))}
+ if(tab==="dm"){
+  if(curT){const th=inbox.find(x=>x.id===curT),ms=(th&&th.msgs)||[];
+   A.append(B("← חזרה",()=>{curT=null;adm()}));
+   ms.forEach(m=>A.append(h("div",{class:"msg"+(m.f==="a"?" me":m.f==="s"?" sys":"")},h("small",{},m.f==="a"?"אתה":m.f==="s"?"מערכת":"מתוודה"),h("span",{},m.t))));
+   const inp=h("input",{placeholder:"כתבו תשובה…",maxlength:"500"});
+   A.append(h("form",{style:"display:flex;gap:8px;margin-top:10px",onsubmit:e=>{e.preventDefault();const v=inp.value.trim();if(!v)return;inp.value="";sendDM(curT,"a",v).catch(()=>toast("שגיאה"))}},inp,h("button",{class:"btn sm p"},"שליחה")))
+  }else{if(!inbox.length)A.append(h("div",{class:"empty"},"אין שיחות"));
+   const lt=x=>{const m=(x.msgs||[]).slice(-1)[0];return m?m.ts:0};
+   inbox.slice().sort((a,b)=>lt(b)-lt(a)).forEach(x=>{const l=(x.msgs||[]).slice(-1)[0]||{};A.append(h("div",{class:"row"},h("b",{},"מתוודה #"+String(x.id).slice(0,4)),h("p",{},(l.t||"").slice(0,80)),B("פתיחה",()=>{curT=x.id;adm()})))})}}
+ if(tab==="st"){A.append(h("div",{class:"row"},h("p",{},`ממתינים: ${pend.length}\nמפורסמים: ${pub.length}\nתגובות: ${cms.length}\nסימוני אהבתי: ${likes.length}\nמחוברים עכשיו: ${online}\nקטגוריות: ${CATS.length} (קבועות בקוד)`)))}}
+$("#mgr").onclick=()=>authed?(adm(),adlg.showModal()):pdlg.showModal();
+$("#admBtn").onclick=()=>{adm();adlg.showModal()};
+$("#pf").onsubmit=async e=>{e.preventDefault();const{error}=await SB.auth.signInWithPassword({email:$("#pe").value.trim(),password:$("#pw").value});$("#pw").value="";if(error)return toast("פרטי כניסה שגויים");location.reload()};
+let lastChat=0,chatRoom=null;const alias="אנונימי #"+(100+Math.floor(Math.random()*900)),msgs=[];
+function addMsg(m){msgs.push(m);if(msgs.length>80)msgs.shift();const b=$("#cbox");b.replaceChildren(...msgs.map(x=>h("div",{class:"msg"+(x.me?" me":"")},h("small",{},x.n),h("span",{},x.t))));b.scrollTop=b.scrollHeight}
+function initChat(r){chatRoom=r;$("#cnote").hidden=true;$("#cin").disabled=false;
+ r.on("chat",m=>{if(m.isMe)return;const d=m.data||{};if(typeof d.t!=="string")return;addMsg({n:String(d.n||"אנונימי").slice(0,20),t:d.t.slice(0,300)})})}
+$("#cf").onsubmit=async e=>{e.preventDefault();const v=$("#cin").value.trim();if(!v||!chatRoom)return;
+ const rn=$("#cnk").value.trim().slice(0,20);if(/מנהל|admin|צוות/i.test(rn)||pii(rn))return toast("בחרו כינוי אחר");const nm=rn||alias;
+ if(pii(v))return toast("הסירו פרטים מזהים מההודעה");
+ if(Date.now()-lastChat<1500)return;lastChat=Date.now();
+ try{await chatRoom.emit("chat",{t:v,n:nm});addMsg({n:nm+" (אני)",t:v,me:1});$("#cin").value=""}catch(er){toast("השליחה נכשלה")}};
+async function sendDM(tid,f,t){const cur=(tid===uid?myThread:((inbox.find(x=>x.id===tid)||{}).msgs))||[];await db.doc("inbox/"+tid).set({msgs:[...cur,{f,t,ts:Date.now()}].slice(-200)})}
+function renderDM(){const b=$("#dbox");if(!b)return;b.replaceChildren(...myThread.map(m=>h("div",{class:"msg"+(m.f==="u"?" me":m.f==="s"?" sys":"")},m.f==="s"?null:h("small",{},m.f==="u"?"אני":"המנהל"),h("span",{},m.t))));b.scrollTop=b.scrollHeight}
+$("#dmBtn").onclick=()=>{if(!db||!uid)return toast("השיחה זמינה רק למחוברים");renderDM();ddlg.showModal()};
+$("#df").onsubmit=async e=>{e.preventDefault();const v=$("#din").value.trim();if(!v||!db||!uid)return;$("#din").value="";try{await sendDM(uid,"u",v)}catch(er){toast("השליחה נכשלה")}};
+/* ---- boot ---- */
+chips();draw();
+(async()=>{
+ try{
+  const user=await claude.use("user");isAdmin=!!user&&await user.canEdit();
+  if(user)uid=String(await user.id());
+  claude.use("room").then(r=>{if(!r)return;const upd=()=>{online=Math.max(1,r.peers().filter(p=>p.kind==="viewer").length);$("#liveN").textContent=online;$("#live").hidden=false;if(adlg.open&&tab==="st")adm()};r.presence({here:1});r.onPeers(upd);upd();initChat(r)}).catch(()=>{});
+ db=await claude.use("db");
+  if(!db)return;
+  const col=(n,fn)=>db.collection(n).onSnapshot(s=>{fn(s.docs.map(d=>({id:d.id,...d.data()})));draw();if(adlg.open)adm()},()=>{});
+  col("published",v=>pub=v);col("comments",v=>cms=v);col("likes",v=>likes=v);if(uid)db.doc("inbox/"+uid).onSnapshot(s=>{myThread=s.exists?(s.data().msgs||[]):[];renderDM()},()=>{});
+  if(isAdmin){authed=true;$("#admBtn").hidden=false;col("pending",v=>{if(window.pI&&v.length>pend.length){toast("📩 וידוי חדש ממתין לאישור");try{navigator.vibrate&&navigator.vibrate(120)}catch(e){}}pend=v;window.pI=1;$("#admBtn").textContent="ניהול"+(v.length?" ("+v.length+")":"");document.title=(v.length?"("+v.length+") ":"")+"וידויים של נשואים"});col("inbox",v=>inbox=v)}
+ }catch(e){}
+})();
 </script>
- <!-- ========================================== -->
-<!-- באנר קופץ אוטומטי (מופיע אחרי 10 שניות) -->
-<!-- ========================================== -->
-<div id="confession-popup" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); z-index: 9999; justify-content: center; align-items: center; backdrop-filter: blur(5px);">
-  <div style="background: linear-gradient(135deg, #1a1a1a, #2c0b10); border: 2px solid #8b1a2b; border-radius: 20px; padding: 25px; width: 90%; max-width: 450px; text-align: center; position: relative; box-shadow: 0 10px 25px rgba(0,0,0,0.5);">
-    
-    <!-- כפתור סגירה (X) -->
-    <button onclick="closePopup()" style="position: absolute; top: 15px; left: 15px; background: none; border: none; color: #fff; font-size: 1.5rem; cursor: pointer;">✕</button>
-    
-    <h2 style="color: #fff; margin-bottom: 10px; font-size: 1.4rem;">🤫 יש לך סוד שאף אחד לא יודע?</h2>
-    <p style="color: #ccc; font-size: 0.95rem; margin-bottom: 15px;">זה הזמן לפרוק את הלב באנונימיות מלאה.</p>
-    
-    <textarea id="popup-confession-text" placeholder="כתוב/י את הווידוי שלך כאן..." style="width: 100%; height: 100px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); color: #fff; padding: 12px; font-family: inherit; resize: none; margin-bottom: 15px;"></textarea>
-    
-    <button onclick="submitPopupConfession()" style="background: #8b1a2b; color: white; border: none; padding: 12px 25px; border-radius: 25px; font-weight: bold; cursor: pointer; font-size: 1rem; width: 100%;">שלח/י וידוי אנונימי 🚀</button>
-    
-    <p id="popup-success-msg" style="display:none; color: #2ecc71; margin-top: 12px; font-weight: bold;">הווידוי נשלח בהצלחה ועובר לאישור המערכת!</p>
-  </div>
-</div>
-
-<!-- ========================================== -->
-<!-- סקריפט להפעלת הטיימר (10 שניות) -->
-<!-- ========================================== -->
-<script>
-// הפעלת טיימר של 10 שניות מרגע טעינת הדף
-setTimeout(function() {
-  document.getElementById('confession-popup').style.display = 'flex';
-}, 10000);
-
-// סגירת הפופאפ
-function closePopup() {
-  document.getElementById('confession-popup').style.display = 'none';
-}
-
-// שליחת הווידוי מתוך הפופאפ
-function submitPopupConfession() {
-  let text = document.getElementById('popup-confession-text').value;
-  if(text.trim() === "") {
-    alert("אנא כתוב/י וידוי לפני השליחה");
-    return;
-  }
-  document.getElementById('popup-confession-text').value = "";
-  document.getElementById('popup-success-msg').style.display = "block";
-  
-  setTimeout(() => {
-    document.getElementById('popup-success-msg').style.display = "none";
-    closePopup();
-  }, 3000);
-}
-</script>
-
 </body>
 </html>
