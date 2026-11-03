@@ -432,5 +432,56 @@ $("#df").onsubmit=e=>{
 if(isAdmin) $("#admBtn").hidden=false;
 chips(); draw();
 </script>
+ <!-- ========================================== -->
+<!-- באנר קופץ אוטומטי (מופיע אחרי 10 שניות) -->
+<!-- ========================================== -->
+<div id="confession-popup" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); z-index: 9999; justify-content: center; align-items: center; backdrop-filter: blur(5px);">
+  <div style="background: linear-gradient(135deg, #1a1a1a, #2c0b10); border: 2px solid #8b1a2b; border-radius: 20px; padding: 25px; width: 90%; max-width: 450px; text-align: center; position: relative; box-shadow: 0 10px 25px rgba(0,0,0,0.5);">
+    
+    <!-- כפתור סגירה (X) -->
+    <button onclick="closePopup()" style="position: absolute; top: 15px; left: 15px; background: none; border: none; color: #fff; font-size: 1.5rem; cursor: pointer;">✕</button>
+    
+    <h2 style="color: #fff; margin-bottom: 10px; font-size: 1.4rem;">🤫 יש לך סוד שאף אחד לא יודע?</h2>
+    <p style="color: #ccc; font-size: 0.95rem; margin-bottom: 15px;">זה הזמן לפרוק את הלב באנונימיות מלאה.</p>
+    
+    <textarea id="popup-confession-text" placeholder="כתוב/י את הווידוי שלך כאן..." style="width: 100%; height: 100px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.5); color: #fff; padding: 12px; font-family: inherit; resize: none; margin-bottom: 15px;"></textarea>
+    
+    <button onclick="submitPopupConfession()" style="background: #8b1a2b; color: white; border: none; padding: 12px 25px; border-radius: 25px; font-weight: bold; cursor: pointer; font-size: 1rem; width: 100%;">שלח/י וידוי אנונימי 🚀</button>
+    
+    <p id="popup-success-msg" style="display:none; color: #2ecc71; margin-top: 12px; font-weight: bold;">הווידוי נשלח בהצלחה ועובר לאישור המערכת!</p>
+  </div>
+</div>
+
+<!-- ========================================== -->
+<!-- סקריפט להפעלת הטיימר (10 שניות) -->
+<!-- ========================================== -->
+<script>
+// הפעלת טיימר של 10 שניות מרגע טעינת הדף
+setTimeout(function() {
+  document.getElementById('confession-popup').style.display = 'flex';
+}, 10000);
+
+// סגירת הפופאפ
+function closePopup() {
+  document.getElementById('confession-popup').style.display = 'none';
+}
+
+// שליחת הווידוי מתוך הפופאפ
+function submitPopupConfession() {
+  let text = document.getElementById('popup-confession-text').value;
+  if(text.trim() === "") {
+    alert("אנא כתוב/י וידוי לפני השליחה");
+    return;
+  }
+  document.getElementById('popup-confession-text').value = "";
+  document.getElementById('popup-success-msg').style.display = "block";
+  
+  setTimeout(() => {
+    document.getElementById('popup-success-msg').style.display = "none";
+    closePopup();
+  }, 3000);
+}
+</script>
+
 </body>
 </html>
