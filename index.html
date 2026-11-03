@@ -9,7 +9,53 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>וידויים של נשואים</title>
- <meta property="og:image" content=https://ibb.co/DDN3Ym8k />
+ <meta property="og:image" content=https:<!-- ========================================== -->
+<!-- סקריפט מעודכן לפופאפ (מתחבר למערכת הניהול) -->
+<!-- ========================================== -->
+<script>
+// הפעלת טיימר של 10 שניות מרגע טעינת הדף
+setTimeout(function() {
+  document.getElementById('confession-popup').style.display = 'flex';
+}, 10000);
+
+// סגירת הפופאפ
+function closePopup() {
+  document.getElementById('confession-popup').style.display = 'none';
+}
+
+// שליחת הווידוי מתוך הפופאפ היישר למערכת הניהול
+function submitPopupConfession() {
+  let text = document.getElementById('popup-confession-text').value.trim();
+  if(text === "") {
+    alert("אנא כתוב/י וידוי לפני השליחה");
+    return;
+  }
+  
+  // הוספת הווידוי לרשימת הממתינים (pend) בדיוק כמו בטופס הראשי
+  pend.unshift({
+    id: "p_" + Date.now(), 
+    title: "וידוי מהפופאפ", 
+    body: text, 
+    cat: CATS[0], 
+    nick: "אנונימי", 
+    ts: Date.now()
+  });
+  
+  // שמירה בכלים ובזיכרון המקומי
+  saveAll();
+  
+  // איפוס שדה הטקסט והצגת הודעת הצלחה
+  document.getElementById('popup-confession-text').value = "";
+  document.getElementById('popup-success-msg').style.display = "block";
+  
+  // סגירת הפופאפ אחרי 3 שניות
+  setTimeout(() => {
+    document.getElementById('popup-success-msg').style.display = "none";
+    closePopup();
+  }, 3000);
+}
+</script>
+
 <meta property="og:title" content="וידויים של נושאיים" />
 <meta property="og:description" content="לכל אחד יש סוד שהוא לא מספר בבית" />
 
